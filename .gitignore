@@ -1,3 +1,10 @@
+# Dependencies and build
+node_modules/
+.next/
+out/
+build/
+*.log
+
 # Devpost learning context
 /devpost/learner-profile.md
 
@@ -5,4 +12,5 @@
 .env
 .env.*
 !.env.example
+
 
