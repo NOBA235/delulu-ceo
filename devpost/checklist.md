@@ -19,7 +19,7 @@ Build mode: fast
   Learner check: Open `http://localhost:3000`, click the sample chips to see them populate the textarea, test typing and submitting empty text to see the inline error message, and confirm the visual styling matches the planned editorial look.
   Commit: `feat: scaffold app and build confession landing form`
 
-- [ ] **2. Server-side API endpoint with AI provider adapter, timeout, rate limiting, and strict schema validation**
+- [x] **2. Server-side API endpoint with AI provider adapter, timeout, rate limiting, and strict schema validation**
   Becomes usable: A functioning `POST /api/pitch` endpoint that validates incoming requests with Zod, applies in-memory rate limiting and a 15-second timeout, calls the AI provider via a clean adapter interface, and validates the 6-field structured JSON response.
   Why now: Risk first. Proves the external AI integration, token capping, prompt engineering, and response validation independently on the server before wiring it into UI state.
   PRD ref: `prd.md > Feature 2: Pitch Generation, Abuse Prevention & Suspense State`, `prd.md > Feature 3: The 4 Satire Cards & Output Quality`
