@@ -1,6 +1,6 @@
 ---
 doc: scope
-status: draft
+status: approved
 ---
 
 # Delulu CEO
@@ -18,10 +18,10 @@ Deadpan Silicon Valley corporate delusion applied to terrible personal life choi
 Developers, students, and young adults making questionable everyday decisions (impulse purchases, late-night rabbit holes, abandoned side projects, neglected budgets) who want to laugh at their own habits and share the joke with friends on Discord, WhatsApp, or X.
 
 ## The Core Loop
-1. **Confess:** The user lands on a clean, minimal interface and types their questionable decision into a prominent input box (or clicks a sample confession).
-2. **Pitch:** The user clicks "Pitch My Delusion" and experiences a brief, entertaining suspense/loading state.
+1. **Confess:** The user lands on a clean, minimal interface and types their questionable decision into a prominent input box (or clicks a sample confession chip).
+2. **Pitch:** The user clicks "Pitch My Delusion" and experiences an entertaining, humorous loading state with robust feedback if requests take longer than expected.
 3. **Reveal:** The app displays four beautifully styled cards arranged like a miniature startup pitch presentation.
-4. **Share & Reset:** The user clicks "Copy My Delusion" to grab clean, formatted text for social sharing (receiving instant confirmation feedback), or resets immediately to confess another bad decision.
+4. **Share & Reset:** The user clicks "Copy My Delusion" to grab clean, formatted text for social sharing (receiving an instant "Delusion copied. Go convince your friends" confirmation), or resets immediately to confess another bad decision.
 
 ## Inspiration & Identity
 - **Tone:** Deadpan corporate optimism meets sharp comedic roasting. Specific, witty, and contextual to the user's input—avoiding bland, generic AI cheerleading.
@@ -34,28 +34,31 @@ Developers, students, and young adults making questionable everyday decisions (i
 - Understand the code structure, tradeoffs, and key architectural choices rather than passively accepting generated code.
 
 ## What "Working" Looks Like
-A user opens the app locally, types a real confession (e.g., *"I spent all my savings on a mechanical keyboard"*), clicks "Pitch My Delusion", and within 2–4 seconds sees four distinct, witty cards rendered on screen. Clicking "Copy My Delusion" places a formatted summary on their clipboard, triggers a *"Delusion copied. Go convince your friends"* notification, and a "Pitch Another" button resets the state cleanly. The entire workflow is demonstrated in under 60 seconds on video.
+A user opens the app locally, types a real confession (or clicks a sample chip like *"I spent all my savings on a mechanical keyboard"*), clicks "Pitch My Delusion", is greeted by a humorous CEO-style loading state, and receives four distinct, witty cards rendered on screen (with 2–4 seconds as an aspiration, backed by resilient slow-request handling). Clicking "Copy My Delusion" places a formatted summary on their clipboard, triggers a *"Delusion copied. Go convince your friends"* notification, and a "Pitch Another" button resets the state cleanly. The entire workflow is demonstrated in under 60 seconds on video.
 
 ## The POC Boundary
 **In for POC:**
 - Single-page application with responsive, minimal design.
-- Large confession text input with 2–3 quick-click sample decision chips for fast testing and video demonstration.
-- Structured LLM generation producing the four exact satire pillars via strict JSON schema.
+- Large confession text input with empty-input validation and 2–3 quick-click sample decision chips for fast testing and video demonstration.
+- Server-side structured LLM generation with strict output schema validation (no API keys exposed client-side).
+- Clear, honest error handling and retry mechanism on API failures (no silent substitution of fake results).
+- Humorous loading state with patience copy for slow generations.
 - Mini-deck card layout presenting the pitch, headline, risk analysis, and verdict.
 - One-click formatted clipboard export with confirmation feedback.
 - Reset / new confession action.
 
-## Later
+**Later:**
 - Downloadable PNG/image export for Instagram Stories / social cards.
 - Text-to-speech audio narration of the CEO verdict in an arrogant executive voice.
 - Community "Wall of Delusion" feed featuring top anonymous pitches.
 
-## Explicitly Cut
+**Explicitly Cut:**
 - **User Authentication / Accounts:** Adds onboarding friction and backend complexity with zero gain for a comedy POC.
 - **Database / Persistent History:** Unnecessary for the core loop; clipboard sharing satisfies user distribution.
 - **Multi-page Navigation:** Keep everything in a focused, single-view reactive flow.
 
-## Key Assumptions
-- The app will use a modern LLM (e.g. Gemini via API) with structured output guarantees so the four cards always render cleanly without markdown parsing failures.
-- The proof of concept will run locally during development and evaluation, fulfilling the hackathon requirement of a working demo video and public GitHub repository without mandatory cloud deployment.
-
+## Key Assumptions & Constraints
+- The app uses an LLM API key kept exclusively on the server, loaded via `.env`, and guaranteed excluded from Git.
+- Generation uses structured output guarantees so cards render reliably.
+- Real API calls are validated; failures show clear comedic error/retry messaging rather than pretending a call succeeded with hardcoded fallbacks.
+- The proof of concept runs locally during development and evaluation, fulfilling the hackathon requirement of a working demo video and public GitHub repository without mandatory cloud deployment.
