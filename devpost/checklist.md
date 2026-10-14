@@ -9,7 +9,7 @@ Build mode: fast
 
 ## Slices
 
-- [ ] **1. Scaffold Next.js app and build confession landing form with validation**
+- [x] **1. Scaffold Next.js app and build confession landing form with validation**
   Becomes usable: A running Next.js web application displaying the premium editorial landing page (`#FAF9F6`), wordmark, hero headline, confession input with 1,000-character cap and live counter, 3 interactive sample chips, and instant client-side validation.
   Why now: Bootstraps the project scaffold, dependencies, TypeScript config, and Tailwind styling inside slice one, giving the core user journey its landing foundation before introducing backend complexity.
   PRD ref: `prd.md > Feature 1: Confession Input, Limits & Validation`, `prd.md > Screens and Layout`, `prd.md > Look and Feel`
