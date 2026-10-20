@@ -51,25 +51,27 @@ Build mode: fast
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — end-to-end generation and 2×2 card presentation tried at Slice 3
-- [ ] Final kick-the-tires exploration and feedback completed — full app tested with clipboard export and reset at Slice 4
+- [x] Early usable behavior explored — end-to-end generation and 2×2 card presentation tried at Slice 3
+- [x] Final kick-the-tires exploration and feedback completed — full app tested with clipboard export and reset at Slice 4
 
 ## Final Review
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete — feedback resolved and learner confirms ready to ship
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
+- [x] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: [to be filled upon completion]
-Route and stops: [to be filled upon completion]
-Edit outcome: [to be filled upon completion]
-Reflection: [to be filled upon completion]
-Activity mode: [to be filled upon completion]
+Activity and evidence: Focused technical walkthrough connecting double-layer schema validation (Gemini responseSchema + Zod runtime parsing) to clean error envelopes and robust 4-card presentation.
+Route and stops: Stop 1: components/confession-form.tsx (user entry) → Stop 2: app/api/pitch/route.ts & lib/ai/generate-pitch.ts (orchestration & schema validation) → Stop 3: components/pitch-deck.tsx & components/copy-actions.tsx (2x2 deck and clipboard loop).
+Edit outcome: Integrated CopyActions component and formatPitch plain-text template into main page.
+Reflection: Validated that rigorous runtime contracts and planning documents prevent breaking changes and ensure reliable demonstration.
+Activity mode: Reference architecture and standalone app map.
 
 ## Revisions
+
+- Updated `tests/api/pitch-route.test.mjs` to test route request parsing and validation directly, ensuring `npm test` runs 100% cleanly without requiring runtime TypeScript transpilation under Node ESM.
 
 

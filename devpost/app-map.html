@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delulu CEO — App Map & Architecture Reference</title>
+  <style>
+    :root {
+      --bg: #FAF9F6;
+      --card-bg: #FFFFFF;
+      --text: #171717;
+      --text-muted: #737373;
+      --accent: #087F5B;
+      --accent-subtle: #E6F4EA;
+      --border: #E5E5E5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: var(--accent-subtle);
+      color: var(--accent);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+    h1 { font-size: 1.85rem; font-weight: 800; color: var(--text); margin-bottom: 0.25rem; }
+    p.lead { color: var(--text-muted); font-size: 1.05rem; }
+    section { margin-bottom: 2.5rem; }
+    h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; border-left: 4px solid var(--accent); padding-left: 0.5rem; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .diagram-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+    }
+    svg text { font-family: inherit; }
+    ol.route-steps { padding-left: 1.5rem; }
+    ol.route-steps li { margin-bottom: 1rem; }
+    ol.route-steps strong { color: var(--accent); }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85em;
+      background: #f1f0eb;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      color: #b91c1c;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">App Map & System Reference</div>
+    <h1>Delulu CEO</h1>
+    <p class="lead">A satirical startup pitch generator turning questionable life choices into venture-backed business empires.</p>
+  </header>
+
+  <section>
+    <h2>System Architecture & Core Journey</h2>
+    <div class="diagram-container">
+      <svg viewBox="0 0 760 160" width="100%" height="160" xmlns="http://www.w3.org/2000/svg">
+        <!-- Step 1 -->
+        <rect x="10" y="40" width="150" height="80" rx="8" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="2"/>
+        <text x="85" y="70" text-anchor="middle" font-size="12" font-weight="bold" fill="#171717">1. User Confession</text>
+        <text x="85" y="90" text-anchor="middle" font-size="10" fill="#737373">components/</text>
+        <text x="85" y="103" text-anchor="middle" font-size="10" fill="#737373">confession-form.tsx</text>
+
+        <!-- Arrow 1 -> 2 -->
+        <line x1="160" y1="80" x2="200" y2="80" stroke="#087F5B" stroke-width="2" marker-end="url(#arrow)"/>
+
+        <!-- Step 2 -->
+        <rect x="200" y="40" width="160" height="80" rx="8" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="2"/>
+        <text x="280" y="70" text-anchor="middle" font-size="12" font-weight="bold" fill="#171717">2. Server API Route</text>
+        <text x="280" y="90" text-anchor="middle" font-size="10" fill="#737373">POST /api/pitch</text>
+        <text x="280" y="103" text-anchor="middle" font-size="10" fill="#737373">Rate Limit + Zod check</text>
+
+        <!-- Arrow 2 -> 3 -->
+        <line x1="360" y1="80" x2="400" y2="80" stroke="#087F5B" stroke-width="2"/>
+
+        <!-- Step 3 -->
+        <rect x="400" y="40" width="160" height="80" rx="8" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="2"/>
+        <text x="480" y="70" text-anchor="middle" font-size="12" font-weight="bold" fill="#171717">3. Gemini Adapter</text>
+        <text x="480" y="90" text-anchor="middle" font-size="10" fill="#737373">lib/ai/providers/</text>
+        <text x="480" y="103" text-anchor="middle" font-size="10" fill="#737373">gemini-adapter.ts</text>
+
+        <!-- Arrow 3 -> 4 -->
+        <line x1="560" y1="80" x2="600" y2="80" stroke="#087F5B" stroke-width="2"/>
+
+        <!-- Step 4 -->
+        <rect x="600" y="40" width="150" height="80" rx="8" fill="#E6F4EA" stroke="#087F5B" stroke-width="2"/>
+        <text x="675" y="70" text-anchor="middle" font-size="12" font-weight="bold" fill="#087F5B">4. 2x2 Pitch Deck</text>
+        <text x="675" y="90" text-anchor="middle" font-size="10" fill="#087F5B">components/pitch-deck</text>
+        <text x="675" y="103" text-anchor="middle" font-size="10" fill="#087F5B">+ copy-actions.tsx</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <h2>Reference Route: Tracing One Request</h2>
+    <div class="card">
+      <ol class="route-steps">
+        <li>
+          <strong>Stop 1: User Entry Point</strong> (<code>components/confession-form.tsx</code>)<br>
+          Validates length client-side with <code>lib/validation/pitch-request.ts</code>. On submit, switches the form to read-only and displays <code>components/loading-status.tsx</code>.
+        </li>
+        <li>
+          <strong>Stop 2: Backend Orchestration & Guardrails</strong> (<code>app/api/pitch/route.ts</code>)<br>
+          Enforces per-IP rate limits (<code>lib/security/rate-limit.ts</code>), runs runtime schema checks, and initiates a 15-second AbortController in <code>lib/ai/generate-pitch.ts</code>.
+        </li>
+        <li>
+          <strong>Stop 3: Structured AI Output & Presentation</strong> (<code>components/pitch-deck.tsx</code> and <code>components/copy-actions.tsx</code>)<br>
+          Renders 4 distinct satire cards in a 2x2 grid, highlights the CEO Verdict, and enables structured plain-text clipboard copying via <code>lib/clipboard/format-pitch.ts</code>.
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <h2>“To Change This, Start Here”</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Change the Humor / Tone</h3>
+        <p>Edit the system prompt in <code>lib/ai/providers/gemini-adapter.ts</code> under <code>SYSTEM_PROMPT</code>.</p>
+      </div>
+      <div class="card">
+        <h3>Add or Modify Preset Chips</h3>
+        <p>Update the <code>SAMPLE_CONFESSIONS</code> array in <code>components/confession-form.tsx</code>.</p>
+      </div>
+      <div class="card">
+        <h3>Change Clipboard Text Format</h3>
+        <p>Update the formatted plain-text structure in <code>lib/clipboard/format-pitch.ts</code>.</p>
+      </div>
+      <div class="card">
+        <h3>Adjust Rate Limits or Timeouts</h3>
+        <p>Modify parameters in <code>lib/security/rate-limit.ts</code> or <code>DEFAULT_TIMEOUT_MS</code> in <code>lib/ai/generate-pitch.ts</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>A Practice to Reuse</h2>
+    <div class="card" style="border-left: 4px solid var(--accent);">
+      <p><strong>Strict Schema Validation on Untrusted AI Responses:</strong></p>
+      <p>Instead of hoping an LLM outputs the right format and parsing it loosely on the frontend, Delulu CEO enforces a double barrier: Gemini's native <code>responseSchema</code> at generation time, followed by runtime verification via <code>PitchResponseSchema.safeParse()</code> on the server. If the shape is invalid, the API fails cleanly with an honest retry error rather than rendering broken or empty cards.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Snapshot generated for commit <code>e84c2e8</code> • To start dev server: <code>npm run dev</code> (open <code>http://localhost:3000</code>).</p>
+  </footer>
+
+</body>
+</html>
