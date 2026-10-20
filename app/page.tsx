@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AndroidShell } from "@/components/android-shell";
 import { ConfessionForm } from "@/components/confession-form";
 import { LoadingStatus } from "@/components/loading-status";
 import { PitchDeck } from "@/components/pitch-deck";
@@ -55,19 +56,15 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#FAF9F6] text-[#171717] flex flex-col justify-center items-center py-8">
+    <AndroidShell onReset={handleReset}>
       {pitch ? (
-        <div className="w-full">
-          <PitchDeck
-            confession={confession}
-            pitch={pitch}
-            actionsSlot={
-              <CopyActions pitch={pitch} onReset={handleReset} />
-            }
-          />
-        </div>
+        <PitchDeck
+          confession={confession}
+          pitch={pitch}
+          actionsSlot={<CopyActions pitch={pitch} onReset={handleReset} />}
+        />
       ) : (
-        <div className="w-full">
+        <div className="flex flex-col flex-1 justify-between">
           <ConfessionForm
             confession={confession}
             setConfession={setConfession}
@@ -78,37 +75,40 @@ export default function Home() {
           />
 
           {isLoading && (
-            <div className="w-full max-w-2xl mx-auto px-4 -mt-2">
+            <div className="px-5 pb-4">
               <LoadingStatus />
             </div>
           )}
 
           {apiError && !isLoading && (
-            <div className="w-full max-w-2xl mx-auto px-4 mt-6">
+            <div className="px-5 pb-4">
               <div
                 role="alert"
-                className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 flex items-start justify-between gap-3 shadow-sm"
+                className="p-3.5 rounded-[24px] bg-[#FFDAD6] border border-[#BA1A1A]/30 text-[#BA1A1A] flex items-start justify-between gap-3 shadow-xs"
               >
-                <div className="flex items-start gap-3">
-                  <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+                <div className="flex items-start gap-2.5">
+                  <AlertCircle className="w-5 h-5 text-[#BA1A1A] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold block text-sm">Pitch Attempt Failed</span>
-                    <p className="text-sm mt-0.5 text-red-700">{apiError}</p>
+                    <span className="font-bold block text-[13px]">
+                      Pitch Attempt Failed
+                    </span>
+                    <p className="text-[12px] mt-0.5 text-[#410002] leading-tight">
+                      {apiError}
+                    </p>
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => handleConfessionSubmit(confession)}
-                  className="px-3 py-1.5 rounded-lg bg-red-600 text-white font-medium text-xs hover:bg-red-700 transition-all shrink-0 focus-visible:ring-2 focus-visible:ring-red-500"
+                  className="px-3 py-1.5 rounded-full bg-[#BA1A1A] text-white font-bold text-[11px] uppercase tracking-wider hover:bg-[#93000A] transition-colors shrink-0"
                 >
-                  Try Again
+                  Retry
                 </button>
               </div>
             </div>
           )}
         </div>
       )}
-    </main>
+    </AndroidShell>
   );
 }
-

@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { Sparkles, Award } from "lucide-react";
 
 interface PitchCardProps {
   number: string;
@@ -17,27 +20,28 @@ export function PitchCard({
 }: PitchCardProps) {
   return (
     <div
-      className={`rounded-2xl p-6 transition-all duration-200 flex flex-col justify-between ${
+      className={`rounded-[28px] p-5 transition-all duration-200 flex flex-col justify-between select-none ${
         isClimax
-          ? "bg-[#E6F4EA] border-2 border-[#087F5B]/40 shadow-md ring-1 ring-[#087F5B]/10"
-          : "bg-white border border-[#E5E5E5] shadow-sm hover:shadow-md"
+          ? "bg-[#006C4C] text-white shadow-lg ring-2 ring-[#89F8C7]/50"
+          : "bg-white border border-[#C2C9BD]/70 shadow-xs hover:shadow-md"
       }`}
     >
       <div>
-        {/* Header Badge */}
-        <div className="flex items-center justify-between mb-4 pb-2 border-b border-black/5">
+        {/* Top Header Badge */}
+        <div className="flex items-center justify-between mb-3 pb-2 border-b border-black/5">
           <span
-            className={`text-xs font-mono font-bold tracking-wider px-2 py-0.5 rounded ${
+            className={`text-[11px] font-mono font-bold tracking-wider px-2.5 py-0.5 rounded-full ${
               isClimax
-                ? "bg-[#087F5B] text-white"
-                : "bg-[#171717]/5 text-[#737373]"
+                ? "bg-[#89F8C7] text-[#002114]"
+                : "bg-[#ECEEE6] text-[#414942]"
             }`}
           >
-            {number} {category}
+            {number} • {category}
           </span>
           {isClimax && (
-            <span className="text-xs font-bold uppercase tracking-wider text-[#087F5B]">
-              ★ Final Verdict
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#89F8C7] flex items-center gap-1">
+              <Sparkles className="w-3.5 h-3.5" />
+              Board Climax
             </span>
           )}
         </div>
@@ -45,20 +49,33 @@ export function PitchCard({
         {/* Title if present */}
         {title && (
           <h3
-            className={`text-lg md:text-xl font-bold tracking-tight mb-3 ${
-              isClimax ? "text-[#087F5B]" : "text-[#171717]"
+            className={`text-[20px] font-bold tracking-tight mb-2 leading-tight ${
+              isClimax ? "text-white" : "text-[#191C1A]"
             }`}
           >
             {title}
           </h3>
         )}
 
-        {/* Content */}
-        <div className="text-sm md:text-base text-[#171717] leading-relaxed space-y-2">
+        {/* Content Area */}
+        <div
+          className={`text-[14px] leading-relaxed space-y-2.5 ${
+            isClimax ? "text-emerald-50" : "text-[#191C1A]"
+          }`}
+        >
           {children}
         </div>
       </div>
+
+      {isClimax && (
+        <div className="mt-4 pt-3 border-t border-white/15 flex items-center justify-between text-[11px] text-[#89F8C7] font-semibold">
+          <div className="flex items-center gap-1">
+            <Award className="w-3.5 h-3.5" />
+            <span>Official VC Term Sheet</span>
+          </div>
+          <span>Series Seed • Guaranteed</span>
+        </div>
+      )}
     </div>
   );
 }
-

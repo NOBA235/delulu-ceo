@@ -3,20 +3,183 @@
 @tailwind utilities;
 
 :root {
-  --background: #FAF9F6;
-  --foreground: #171717;
+  --background: #F4F5F0;
+  --foreground: #191C1A;
+  --m3-surface: #F4F5F0;
+  --m3-surface-container: #ECEEE6;
+  --m3-primary: #006C4C;
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: #111412;
+  font-family: 'Plus Jakarta Sans', 'Google Sans', 'Roboto', system-ui, -apple-system, sans-serif;
   min-height: 100vh;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Ensure accessible and visible focus states */
+/* Material 3 Typography Utility Classes */
+.m3-headline-medium {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.m3-title-medium {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.m3-body-large {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.m3-label-large {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Custom Scrollbar for phone viewport */
+.android-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.android-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.android-scroll::-webkit-scrollbar-thumb {
+  background: #C2C9BD;
+  border-radius: 9999px;
+}
+.android-scroll::-webkit-scrollbar-thumb:hover {
+  background: #72796F;
+}
+
+/* Ensure accessible focus states with M3 Emerald */
 :focus-visible {
-  outline: 2px solid #087F5B;
+  outline: 2px solid #006C4C;
   outline-offset: 2px;
+}
+
+/* Animations for Mascot & Micro-interactions */
+@keyframes floatBob {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.8deg);
+  }
+}
+
+@keyframes glassesGleam {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  60% {
+    transform: translateX(200%) skewX(-20deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(200%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+@keyframes steamRise {
+  0% {
+    transform: translateY(0) scaleX(0.8);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateY(-8px) scaleX(1.2);
+  }
+  100% {
+    transform: translateY(-16px) scaleX(0.9);
+    opacity: 0;
+  }
+}
+
+@keyframes nodExcited {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  25% {
+    transform: translateY(-5px) rotate(-1.5deg);
+  }
+  75% {
+    transform: translateY(3px) rotate(1.5deg);
+  }
+}
+
+@keyframes particleAscent {
+  0% {
+    transform: translateY(0) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-40px) scale(1.1) rotate(15deg);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+.animate-float-bob {
+  animation: floatBob 4s ease-in-out infinite;
+}
+
+.animate-sunglasses-gleam {
+  animation: glassesGleam 3.5s ease-in-out infinite;
+}
+
+.animate-steam-1 {
+  animation: steamRise 2s ease-out infinite;
+}
+
+.animate-steam-2 {
+  animation: steamRise 2s ease-out 1s infinite;
+}
+
+.animate-nod-excited {
+  animation: nodExcited 0.7s ease-in-out infinite;
+}
+
+.animate-particle-1 {
+  animation: particleAscent 2.2s ease-out infinite;
+}
+.animate-particle-2 {
+  animation: particleAscent 2.6s ease-out 0.7s infinite;
+}
+.animate-particle-3 {
+  animation: particleAscent 2.4s ease-out 1.3s infinite;
 }
 
