@@ -29,7 +29,7 @@ Build mode: fast
   Learner check: Inspect the test script output or curl response to verify that the generated startup name, concept, Forbes headline, risk analysis, and CEO verdict are witty, context-specific, and match the schema.
   Commit: `feat: implement server-side AI pitch generation with strict schema validation`
 
-- [ ] **3. Wire frontend to API with accessible humorous loading state, error recovery, and 2x2 pitch deck rendering**
+- [x] **3. Wire frontend to API with accessible humorous loading state, error recovery, and 2x2 pitch deck rendering**
   Becomes usable: The complete end-to-end core journey. Submitting a confession triggers the rotating humorous loading state, locks the input to read-only, calls `/api/pitch`, handles API errors gracefully with a "Try Again" recovery action, and renders the four satirical cards in a responsive 2×2 grid with the highlighted CEO Verdict.
   Why now: Delivers the core product payoff and kernel early by connecting the proven frontend form to the proven backend generation.
   PRD ref: `prd.md > Feature 2: Pitch Generation, Abuse Prevention & Suspense State`, `prd.md > Feature 3: The 4 Satire Cards & Output Quality`, `prd.md > States and Boundaries`
@@ -39,7 +39,7 @@ Build mode: fast
   Learner check: Open the app, type a real questionable decision (or use a sample chip), click "Pitch My Delusion →", watch the rotating loading status, and read through the four generated cards on screen.
   Commit: `feat: connect core pitch flow with humorous loading and 2x2 card deck`
 
-- [ ] **4. Formatted clipboard export with fallback and full state reset**
+- [x] **4. Formatted clipboard export with fallback and full state reset**
   Becomes usable: The complete, shareable loop. Users can click "Copy My Delusion" to place formatted plain text onto their clipboard (with "Copied!" button feedback and toast notification), see a manual fallback if clipboard permissions fail, and click "Pitch Another Delusion" to reset the interface for a fresh confession.
   Why now: Closes the product loop and delivers the primary sharing requirement needed for a 60-second hackathon demonstration video.
   PRD ref: `prd.md > Feature 4: Clipboard Export, Fallback & Reset`, `prd.md > The Core Journey` (steps 5-6)

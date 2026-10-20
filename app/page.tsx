@@ -4,8 +4,9 @@ import { useState } from "react";
 import { ConfessionForm } from "@/components/confession-form";
 import { LoadingStatus } from "@/components/loading-status";
 import { PitchDeck } from "@/components/pitch-deck";
+import { CopyActions } from "@/components/copy-actions";
 import { PitchResponse } from "@/lib/validation/pitch-response";
-import { AlertCircle, RotateCcw } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 
 export default function Home() {
   const [confession, setConfession] = useState("");
@@ -61,16 +62,7 @@ export default function Home() {
             confession={confession}
             pitch={pitch}
             actionsSlot={
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 border-t border-[#E5E5E5]">
-                <button
-                  type="button"
-                  onClick={handleReset}
-                  className="px-6 py-3 rounded-xl bg-white border border-[#E5E5E5] text-[#171717] hover:bg-[#FAF9F6] font-medium text-sm transition-all flex items-center gap-2 shadow-sm focus-visible:ring-2 focus-visible:ring-[#087F5B]"
-                >
-                  <RotateCcw className="w-4 h-4 text-[#737373]" />
-                  <span>Pitch Another Delusion</span>
-                </button>
-              </div>
+              <CopyActions pitch={pitch} onReset={handleReset} />
             }
           />
         </div>
@@ -119,3 +111,4 @@ export default function Home() {
     </main>
   );
 }
+
