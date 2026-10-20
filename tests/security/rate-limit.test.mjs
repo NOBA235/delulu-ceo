@@ -29,3 +29,4 @@ test("allows requests up to configured limit", () => {
   assert.equal(checkLimit(ip).allowed, true);
   assert.equal(checkLimit(ip).allowed, false); // 4th request blocked
 });
+

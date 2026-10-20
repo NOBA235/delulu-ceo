@@ -104,3 +104,4 @@ export function PitchDeck({ confession, pitch, actionsSlot }: PitchDeckProps) {
     </div>
   );
 }
+

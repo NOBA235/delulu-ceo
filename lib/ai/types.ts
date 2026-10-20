@@ -11,3 +11,4 @@ export interface ProviderError {
   message: string;
   status: number;
 }
+

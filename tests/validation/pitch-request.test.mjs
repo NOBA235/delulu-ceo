@@ -44,3 +44,4 @@ test("accepts valid confession under 1000 characters", () => {
   assert.equal(result.success, true);
   assert.equal(result.data.confession, validText);
 });
+

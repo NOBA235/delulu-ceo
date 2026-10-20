@@ -9,3 +9,4 @@ export const PitchRequestSchema = z.object({
 });
 
 export type PitchRequest = z.infer<typeof PitchRequestSchema>;
+

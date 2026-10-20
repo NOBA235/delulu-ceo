@@ -53,3 +53,4 @@ test("rejects pitch object with empty or whitespace-only field", () => {
   const result = PitchResponseSchema.safeParse(invalidData);
   assert.equal(result.success, false);
 });
+

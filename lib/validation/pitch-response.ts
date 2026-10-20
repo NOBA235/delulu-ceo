@@ -10,3 +10,4 @@ export const PitchResponseSchema = z.object({
 });
 
 export type PitchResponse = z.infer<typeof PitchResponseSchema>;
+
