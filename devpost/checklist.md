@@ -49,14 +49,25 @@ Build mode: fast
   Learner check: Generate a pitch, click "Copy My Delusion", paste into a text editor or Discord to inspect the formatting, and click "Pitch Another Delusion" to confirm the app resets cleanly without making an API call.
   Commit: `feat: add formatted clipboard export and state reset`
 
+- [ ] **5. Download a creator-ready pitch image**
+  Becomes usable: A user can download a polished portrait PNG containing the startup name, fictional Forbes headline, CEO verdict, and Delulu CEO branding; the original confession is excluded, and existing copy/reset actions continue to work.
+  Why now: This adds a concrete creator-oriented sharing format to the already working core loop, without prematurely adding accounts, paid plans, or persistent data.
+  PRD ref: `prd.md > Feature 5: Creator Share Card Download`
+  Spec ref: `spec.md > Components` (Creator Share Card Export), `spec.md > Look and Feel`
+  Build: Add a focused share-card export control to the results actions; render a 4:5, 1080×1350 PNG from the current pitch data in the browser; show success/failure feedback; preserve text copy and reset behavior.
+  Verify (mechanical): Run `npm test` and `npm run build`; manually generate a pitch, download the PNG, and verify its dimensions, readable content, branding, absence of the confession, and graceful failure handling.
+  Learner check: Generate a pitch, download the share image, open it, and tell me whether it looks ready to post and what you would change.
+  Commit: `feat: add creator-ready pitch image download`
+
 ## Hands-on Checkpoints
 
 - [x] Early usable behavior explored — end-to-end generation and 2×2 card presentation tried at Slice 3
+- [ ] Creator share-card behavior explored — try the downloaded image after Slice 5 and give feedback on post-readiness
 - [x] Final kick-the-tires exploration and feedback completed — full app tested with clipboard export and reset at Slice 4
 
 ## Final Review
 
-- [x] Final review complete — feedback resolved and learner confirms ready to ship
+- [ ] Final review complete — feedback resolved and learner confirms ready to ship
 
 ## Code Tour and App Map
 
@@ -71,6 +82,8 @@ Reflection: Validated that rigorous runtime contracts and planning documents pre
 Activity mode: Reference architecture and standalone app map.
 
 ## Revisions
+
+- Added a creator-ready portrait PNG download to the POC after the user chose to target creators; excluded confession text and deferred monetization until demand is validated.
 
 - Updated `tests/api/pitch-route.test.mjs` to test route request parsing and validation directly, ensuring `npm test` runs 100% cleanly without requiring runtime TypeScript transpilation under Node ESM.
 

@@ -166,6 +166,20 @@ Delulu CEO is a focused single-page application with two primary visual phases (
   - [ ] If clipboard write rejects, the user sees an honest fallback message.
   - [ ] "Pitch Another Delusion" clears cards and re-enables the input without triggering any network call.
 
+### Feature 5: Creator Share Card Download
+- **Behavior:**
+  - In the results view, the user can download a polished portrait PNG (4:5 ratio, 1080×1350) ready to post to social platforms.
+  - The image presents Delulu CEO branding/tagline, the generated startup name, Forbes-style headline, and CEO verdict in a readable, branded layout.
+  - The original confession is deliberately excluded from the image; the export uses only the generated pitch fields and app branding.
+  - PNG creation happens in the browser from the current in-memory pitch. No account, database, third-party image API, or additional AI request is required.
+  - Existing copy and reset actions remain available.
+- **Acceptance Criteria:**
+  - [ ] A user can download a valid 1080×1350 PNG from a generated pitch.
+  - [ ] The PNG contains the startup name, Forbes headline, CEO verdict, and Delulu CEO branding, with text that remains legible and within the image bounds.
+  - [ ] The user's original confession is not present in the downloaded image.
+  - [ ] Download success and failure are communicated accessibly; if export fails, copy and reset still work.
+  - [ ] The download action is usable by keyboard and on narrow mobile screens.
+
 ---
 
 ## States and Boundaries
@@ -181,6 +195,7 @@ Delulu CEO is a focused single-page application with two primary visual phases (
 - **Success State:** Input section transitions into the 2×2 card deck with original confession summary banner and action buttons.
 - **Copied State:** "Copied!" button state with *"Delusion copied. Go convince your friends"* notification.
 - **Clipboard Error State:** Inline notice: *"Unable to copy automatically. Please select and copy the text manually."*
+- **Share Image Export State:** The user can trigger an in-browser PNG download; a success status or a clear retryable error is shown without losing the pitch.
 
 ---
 
@@ -205,14 +220,15 @@ Delulu CEO is a focused single-page application with two primary visual phases (
 - Server-side LLM route using environment variables, prompt token bounds, and strict JSON schema validation.
 - 2×2 desktop grid / stacked mobile cards with CEO Verdict punchline styling.
 - Formatted clipboard export with verified success confirmation and manual fallback.
+- Browser-generated, branded 1080×1350 PNG share card that excludes the original confession.
 - State reset button.
 
 ---
 
 ## Deferred From the POC
-- **PNG Card Generation / Download:** Generating downloadable image assets via canvas/DOM rasterization.
 - **Voiceover / TTS:** Audio playback of the CEO verdict in an arrogant executive voice.
 - **Delusion Leaderboard / Wall of Fame:** Public feed of community-submitted pitches.
+- **Batch generation, paid plans, and creator analytics:** Revisit only after validating creator demand.
 
 ---
 

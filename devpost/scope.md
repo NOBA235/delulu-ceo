@@ -45,12 +45,13 @@ A user opens the app locally, types a real confession (or clicks a sample chip l
 - Humorous loading state with patience copy for slow generations.
 - Mini-deck card layout presenting the pitch, headline, risk analysis, and verdict.
 - One-click formatted clipboard export with confirmation feedback.
+- Downloadable portrait PNG share card featuring the startup name, Forbes-style headline, CEO verdict, and Delulu CEO branding. Do not include the original confession in the image.
 - Reset / new confession action.
 
 **Later:**
-- Downloadable PNG/image export for Instagram Stories / social cards.
 - Text-to-speech audio narration of the CEO verdict in an arrogant executive voice.
 - Community "Wall of Delusion" feed featuring top anonymous pitches.
+- Batch generation, paid plans, and creator analytics until user interviews or usage demonstrate demand.
 
 **Explicitly Cut:**
 - **User Authentication / Accounts:** Adds onboarding friction and backend complexity with zero gain for a comedy POC.

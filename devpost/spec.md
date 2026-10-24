@@ -128,6 +128,13 @@ Demonstrated in under 60 seconds on screen:
 - **Connections:** Calls `lib/clipboard/format-pitch.ts` and `navigator.clipboard.writeText`; displays temporary "Copied!" and toast notification, or manual-copy fallback.
 - **PRD Ref:** `prd.md > Feature 4: Clipboard Export, Fallback & Reset`.
 
+### 6. Creator Share Card Export
+- **Purpose:** Let a creator download a ready-to-post 4:5 PNG from a generated pitch without an account or server-side storage.
+- **Content:** Branded Delulu CEO mark/tagline, startup name, Forbes-style headline, and CEO verdict. Exclude the original confession to avoid putting potentially personal input into a shareable image.
+- **Implementation boundary:** Render the card from current in-memory pitch data and export in the browser; do not add image-generation APIs, a database, authentication, paid plans, or analytics in this increment. Keep the existing plain-text copy action available.
+- **Failure behavior:** If PNG rendering or download fails, show a clear inline error and leave copy/reset usable.
+- **PRD Ref:** `prd.md > Feature 5: Creator Share Card Download`.
+
 ---
 
 ## Data Model & State Machine
