@@ -22,7 +22,7 @@ export class GeminiPitchAdapter implements PitchProvider {
   private client: GoogleGenAI | null = null;
   private modelName: string;
 
-  constructor(apiKey?: string, modelName: string = "gemini-2.5-flash") {
+  constructor(apiKey?: string, modelName: string = "gemini-3.8-flash") {
     const key = apiKey || process.env.AI_API_KEY || process.env.GEMINI_API_KEY;
     if (key && key !== "your_gemini_api_key_here") {
       this.client = new GoogleGenAI({ apiKey: key });

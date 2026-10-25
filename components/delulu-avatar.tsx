@@ -33,11 +33,17 @@ const STATE_QUOTES: Record<AvatarState, string[]> = {
 };
 
 export function DeluluAvatar({ state, customQuote }: DeluluAvatarProps) {
-  // Select quote based on state
-  const quote =
-    customQuote ||
-    STATE_QUOTES[state][Math.floor(Math.random() * STATE_QUOTES[state].length)] ||
-    STATE_QUOTES[state][0];
+  // Keep the first render deterministic so server and client markup match.
+  const [quote, setQuote] = React.useState(
+    () => customQuote || STATE_QUOTES[state][0]
+  );
+
+  React.useEffect(() => {
+    const quotes = STATE_QUOTES[state];
+    setQuote(
+      customQuote || quotes[Math.floor(Math.random() * quotes.length)] || quotes[0]
+    );
+  }, [customQuote, state]);
 
   return (
     <div className="relative flex flex-col items-center select-none py-2">
