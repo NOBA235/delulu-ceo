@@ -80,7 +80,24 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (errorMessage.includes("AI_API_KEY is not configured")) {
+    if (
+      errorMessage.includes("prepayment credits") ||
+      errorMessage.includes("RESOURCE_EXHAUSTED") ||
+      errorMessage.includes("402")
+    ) {
+      return NextResponse.json(
+        {
+          error: {
+            code: "PROVIDER_QUOTA_EXHAUSTED",
+            message:
+              "Gemini API quota or credits depleted (402 / Resource Exhausted). Please check your API key at aistudio.google.com or use a key from a project with active free-tier quota.",
+          },
+        },
+        { status: 502 }
+      );
+    }
+
+    if (errorMessage.includes("API_KEY is not configured")) {
       return NextResponse.json(
         {
           error: {

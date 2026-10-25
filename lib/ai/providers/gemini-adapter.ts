@@ -23,7 +23,7 @@ export class GeminiPitchAdapter implements PitchProvider {
   private modelName: string;
 
   constructor(apiKey?: string, modelName: string = "gemini-2.5-flash") {
-    const key = apiKey || process.env.AI_API_KEY;
+    const key = apiKey || process.env.AI_API_KEY || process.env.GEMINI_API_KEY;
     if (key && key !== "your_gemini_api_key_here") {
       this.client = new GoogleGenAI({ apiKey: key });
     }
@@ -33,7 +33,7 @@ export class GeminiPitchAdapter implements PitchProvider {
   async generatePitch(confession: string, signal?: AbortSignal): Promise<unknown> {
     if (!this.client) {
       throw new Error(
-        "AI_API_KEY is not configured on the server. Please add a valid Gemini API key to .env.local."
+        "API_KEY is not configured on the server. Please add your key (AI_API_KEY or GEMINI_API_KEY) to .env.local or .env."
       );
     }
 
