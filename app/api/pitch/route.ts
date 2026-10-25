@@ -81,6 +81,26 @@ export async function POST(req: NextRequest) {
     }
 
     if (
+      errorMessage.includes("not available") ||
+      errorMessage.includes("high demand") ||
+      errorMessage.includes("UNAVAILABLE") ||
+      errorMessage.includes("NOT_FOUND") ||
+      errorMessage.includes("This model") ||
+      errorMessage.includes("currently experiencing high demand")
+    ) {
+      return NextResponse.json(
+        {
+          error: {
+            code: "PROVIDER_UNAVAILABLE",
+            message:
+              "Gemini is temporarily unavailable. Please try your pitch again in a moment.",
+          },
+        },
+        { status: 503 }
+      );
+    }
+
+    if (
       errorMessage.includes("prepayment credits") ||
       errorMessage.includes("RESOURCE_EXHAUSTED") ||
       errorMessage.includes("402")
